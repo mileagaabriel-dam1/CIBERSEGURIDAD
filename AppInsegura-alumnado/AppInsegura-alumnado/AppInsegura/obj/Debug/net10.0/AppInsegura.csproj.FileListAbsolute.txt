@@ -1,0 +1,14 @@
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\bin\Debug\net10.0\AppInsegura.exe
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\bin\Debug\net10.0\AppInsegura.deps.json
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\bin\Debug\net10.0\AppInsegura.runtimeconfig.json
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\bin\Debug\net10.0\AppInsegura.dll
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\bin\Debug\net10.0\AppInsegura.pdb
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.AssemblyInfoInputs.cache
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.AssemblyInfo.cs
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.csproj.CoreCompileInputs.cache
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.dll
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\refint\AppInsegura.dll
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.pdb
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\AppInsegura.genruntimeconfig.cache
+C:\Users\sandr\Downloads\AppInsegura-alumnado\AppInsegura\obj\Debug\net10.0\ref\AppInsegura.dll
