@@ -16,7 +16,8 @@ namespace AppInsegura
             CargarUsuariosDeEjemplo();
 
             Console.WriteLine("=== Gestor de Usuarios y Partidas ===");
-            Console.WriteLine("(usuarios de prueba: admin/admin1234, ana/ana2024)");
+            // ARREGLO: quitada la línea que mostraba "admin/admin1234, ana/ana2024".
+            // Motivo: enseñaba las contraseñas (incluida la del admin) a cualquiera que abriera la app.
             Console.WriteLine();
 
             bool salir = false;
@@ -55,11 +56,18 @@ namespace AppInsegura
                             break;
                     }
                 }
-                catch (Exception ex)
+                catch (ArgumentException ex)
                 {
-                    Console.WriteLine("Ha ocurrido un error inesperado:");
-                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.Message);
                 }
+                // ARREGLO: los errores de validación (contraseña corta, usuario repetido...) muestran solo nuestro mensaje.
+                // Motivo: el usuario sabe qué ha hecho mal sin ver detalles internos.
+                catch (Exception)
+                {
+                    Console.WriteLine("Ha ocurrido un error inesperado.");
+                }
+                // ARREGLO: quitado Console.WriteLine(ex.ToString()).
+                // Motivo: mostraba la traza completa del error (clases, rutas, líneas), información útil para un atacante.
 
                 Console.WriteLine();
             }
@@ -69,9 +77,15 @@ namespace AppInsegura
 
         private static void CargarUsuariosDeEjemplo()
         {
-            auth.Registrar("admin", "admin1234", "admin");
-            auth.Registrar("ana", "ana2024", "jugador");
+            string? claveAdmin = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
+            string? claveAna = Environment.GetEnvironmentVariable("ANA_PASSWORD");
+
+            if (claveAdmin != null) auth.Registrar("admin", claveAdmin, "admin");
+            if (claveAna != null) auth.Registrar("ana", claveAna, "jugador");
         }
+        // ARREGLO: las contraseñas ya no están escritas en el código; se leen de las variables de entorno
+        // ADMIN_PASSWORD y ANA_PASSWORD (si no existen, ese usuario no se crea).
+        // Motivo: con "admin1234" en el código, cualquiera que lo vea (por ejemplo en GitHub) entra como admin.
 
         private static void MostrarMenu()
         {
@@ -140,11 +154,20 @@ namespace AppInsegura
 
             Console.WriteLine($"Nombre: {usuarioActual.Nombre}");
             Console.WriteLine($"Rol: {usuarioActual.Rol}");
-            Console.WriteLine($"Token de sesión: {usuarioActual.TokenSesion}");
+            // ARREGLO: quitada la línea que mostraba el token de sesión.
+            // Motivo: el token es secreto; si alguien lo ve, puede hacerse pasar por ti.
         }
 
         private static void PanelAdministracion()
         {
+            if (usuarioActual == null || usuarioActual.Rol != "admin")
+            {
+                Console.WriteLine("Opción no válida.");
+                return;
+            }
+            // ARREGLO: se comprueba que el usuario sea admin antes de entrar al panel.
+            // Motivo: antes la opción 5 solo se ocultaba en el menú, pero escribiendo "5" entraba cualquiera, incluso sin iniciar sesión.
+
             Console.WriteLine("=== PANEL DE ADMINISTRACIÓN ===");
             Console.WriteLine("Lista de usuarios registrados:");
             foreach (Usuario u in baseDatos.ListarTodos())

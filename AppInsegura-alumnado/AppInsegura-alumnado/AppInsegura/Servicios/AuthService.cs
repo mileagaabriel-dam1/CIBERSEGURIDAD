@@ -188,7 +188,7 @@ namespace AppInsegura.Servicios
         }
         // ARREGLO: el token se genera con RandomNumberGenerator (32 bytes = 256 bits) en lugar de new Random() con 6 cifras.
         // MOTIVO: System.Random no es criptográficamente seguro (es predecible) y 6 cifras son solo 900.000 posibilidades,
-        // que se prueban en segundos. Un token de 256 bits aleatorios es imposible de adivinar.
+        //         que se prueban en segundos. Un token de 256 bits aleatorios es imposible de adivinar.
     }
 
     public class ValidacionException : Exception
